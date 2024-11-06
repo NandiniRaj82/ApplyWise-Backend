@@ -8,6 +8,7 @@ router.post("/api/v1/users/login",usersController.login);
 
 router.post("/api/v1/data/add-data",dataController.addInternships);
 router.get("/api/v1/data/show-data",dataController.showInternships);
+router.get("/api/v1/data/get-data",dataController.getIntern);
 
 
 module.exports = router;

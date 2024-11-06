@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 const { intern } = require("../Models/data_model");
 
 exports.addInternships = async (req, res) => {
@@ -47,3 +49,21 @@ exports.showInternships = async (req, res) => {
     }
 };
 
+exports.getIntern = async (req, res) => {
+  try {
+    const response = await axios.get('http://127.0.0.1:5000/internships'); 
+    const internshipsData = response.data; 
+
+    console.log('Fetched data:', internshipsData);
+
+    const postResponse = await axios.post('http://localhost:3000/api/v1/data/add-data', internshipsData);
+
+    res.status(200).json({
+      message: 'Data fetched and automatically added to the database successfully',
+      postResponse: postResponse.data, 
+    });
+  } catch (error) {
+    console.error('Error occurred:', error.message);
+    res.status(500).json({ message: 'Failed to fetch and add data' });
+  }
+};
