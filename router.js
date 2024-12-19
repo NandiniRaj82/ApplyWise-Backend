@@ -10,5 +10,5 @@ router.post("/api/v1/data/add-data",dataController.addInternships);
 router.get("/api/v1/data/show-data",dataController.showInternships);
 router.get("/api/v1/data/get-data",dataController.getIntern);
 
-
+//just to check it is verified or not
 module.exports = router;
